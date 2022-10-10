@@ -74,5 +74,14 @@ a:link {
 
 #timer:hover {
   background-color: #f5c652;
-  size: 1.2em;
+}
+
+#generateRandomCard:hover {
+  background-color: #9cc1ec;
+}
+
+#timer,
+#generateRandomCard {
+  background-color: #ebebeb;
+  font-size: 18px;
 }

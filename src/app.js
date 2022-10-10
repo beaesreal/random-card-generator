@@ -24,14 +24,15 @@ window.onclick = function() {
   document.querySelector("#timer").addEventListener("click", () => {
     //if paused start
     if (myInterval == -1) {
-      timer.innerHTML = "Pause timer";
       myInterval = setInterval(() => {
         document.querySelector(".card").classList.add(generateRandomSuit());
         document.querySelector(".number").innerHTML = generateRandomNumber();
-      }, 1000);
+      }, 2000);
+      timer.innerHTML =
+        '<span style="color:#0A95FF"> Stop generating a card every two seconds ⏸️ </span>';
       //else pause
     } else {
-      timer.innerHTML = "Start timer";
+      timer.innerHTML = "▶️ Generate a new card every two seconds";
       clearInterval(myInterval);
       myInterval = -1;
     }
@@ -68,7 +69,11 @@ let generateRandomSuit = () => {
   return suit[indexSuit];
 };
 
-/*var btn = document.getElementById("generateRandomCard");
+/*
+
+------ PRUEBAS ------
+
+var btn = document.getElementById("generateRandomCard");
 btn.addEventListener("click", generateRandomNumber);
 
 /*var btn = document.querySelector("#generateRandomCard");
@@ -83,4 +88,22 @@ setTimeout(() => {
 let btn = document.getElementById("generateRandomCard");
 btn.addEventListener("click", generateRandomSuit);
 btn.addEventListener("click", generateRandomNumber);
+
+//listen for window resize event
+window.addEventListener("resize", function(event) {
+  var newWidth = window.innerWidth;
+  var newHeight = window.innerHeight;
+});
+
+// Get current width and height (does not change the variables automatically)
+let width = window.innerWidth;
+let height = window.innerHeight;
+
+// Updates the variables every time the window resizes
+window.addEventListener("resize", function(event) {
+  width = window.innerWidth;
+  height = window.innerHeight;
+});
+
+
 */
