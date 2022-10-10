@@ -1,1 +1,78 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
+
+body {
+  background: #75c46b;
+  margin-top: 50px;
+}
+
+.card {
+  display: inline-block;
+  margin: auto;
+  text-align: center;
+  width: 280px;
+  height: 400px;
+  border-radius: 10px;
+  border: 1px solid rgb(185, 185, 185);
+  position: relative;
+}
+
+.spade::before,
+.spade::after {
+  content: "\2660";
+}
+
+.card.club::before,
+.card.club::after {
+  content: "\2663";
+}
+
+.card.heart::before,
+.card.heart::after {
+  content: "\2665";
+  color: red;
+}
+
+.card.diamond::before,
+.card.diamond::after {
+  content: "\2666";
+  color: red;
+}
+
+.card::before {
+  position: absolute;
+  top: 0px;
+  left: 30px;
+  font-size: 80px;
+  text-align: center;
+}
+
+.card::after {
+  position: absolute;
+  bottom: 0px;
+  right: 30px;
+  font-size: 80px;
+  text-align: center;
+  rotate: 180deg;
+}
+
+.number {
+  font-size: 100px;
+  display: inline-block;
+  margin: auto;
+  line-height: 400px;
+}
+
+#footer {
+  color: rgb(240, 240, 240);
+  font-weight: 600;
+  background-color: rgb(36, 36, 36);
+}
+
+a:link {
+  color: #6fb3cc;
+}
+
+#timer:focus {
+  background-color: red;
+  size: 1.2em;
+}
