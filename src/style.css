@@ -72,7 +72,7 @@ a:link {
   color: #6fb3cc;
 }
 
-#timer:focus {
-  background-color: red;
+#timer:hover {
+  background-color: #f5c652;
   size: 1.2em;
 }

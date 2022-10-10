@@ -4,6 +4,7 @@ import "./style.css";
 
 import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
+import { Button } from "bootstrap";
 
 window.onload = function() {
   //write your code here
@@ -21,13 +22,23 @@ window.onclick = function() {
     });
 
   document.querySelector("#timer").addEventListener("click", () => {
-    setInterval(() => {
-      document.querySelector(".card").classList.add(generateRandomSuit());
-      document.querySelector(".number").innerHTML = generateRandomNumber();
-    }, 1000);
-    false;
+    //if paused start
+    if (myInterval == -1) {
+      timer.innerHTML = "Pause timer";
+      myInterval = setInterval(() => {
+        document.querySelector(".card").classList.add(generateRandomSuit());
+        document.querySelector(".number").innerHTML = generateRandomNumber();
+      }, 1000);
+      //else pause
+    } else {
+      timer.innerHTML = "Start timer";
+      clearInterval(myInterval);
+      myInterval = -1;
+    }
   });
 };
+
+let myInterval = -1;
 
 let generateRandomNumber = () => {
   let numbers = [
