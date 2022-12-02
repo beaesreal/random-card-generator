@@ -3,6 +3,7 @@
 body {
   background: #75c46b;
   margin-top: 50px;
+  padding-bottom: 70px;
 }
 
 .card {
@@ -68,7 +69,7 @@ body {
   background-color: rgb(36, 36, 36);
 }
 
-a:link {
+a {
   color: #6fb3cc;
 }
 

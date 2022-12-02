@@ -7,37 +7,36 @@ import "./assets/img/4geeks.ico";
 import { Button } from "bootstrap";
 
 window.onload = function() {
-  //write your code here
-
   document.querySelector(".card").classList.add(generateRandomSuit());
   document.querySelector(".number").innerHTML = generateRandomNumber();
 };
 
-window.onclick = function() {
-  document
-    .querySelector("#generateRandomCard")
-    .addEventListener("click", () => {
-      document.querySelector(".card").classList.add(generateRandomSuit());
-      document.querySelector(".number").innerHTML = generateRandomNumber();
-    });
+let suit = ["diamond", "spade", "heart", "club"];
 
-  document.querySelector("#timer").addEventListener("click", () => {
-    //if paused start
-    if (myInterval == -1) {
-      myInterval = setInterval(() => {
-        document.querySelector(".card").classList.add(generateRandomSuit());
-        document.querySelector(".number").innerHTML = generateRandomNumber();
-      }, 2000);
-      timer.innerHTML =
-        '<span style="color:#0A95FF"> Stop generating a card every two seconds ⏸️ </span>';
-      //else pause
-    } else {
-      timer.innerHTML = "▶️ Generate a new card every two seconds";
-      clearInterval(myInterval);
-      myInterval = -1;
+window.getCard = function getCard() {
+  let card = document.querySelector(".card");
+  for (let i = 0; i < suit.length; i++) {
+    if (card.classList.contains(suit[i])) {
+      card.classList.remove(suit[i]);
     }
-  });
+  }
+  card.classList.add(generateRandomSuit(suit));
+  document.querySelector(".number").innerHTML = generateRandomNumber();
 };
+
+document.querySelector("#timer").addEventListener("click", () => {
+  if (myInterval == -1) {
+    myInterval = setInterval(() => {
+      getCard();
+    }, 2000);
+    timer.innerHTML =
+      '<span style="color:#0A95FF"> Stop generating a card every two seconds ⏸️ </span>';
+  } else {
+    timer.innerHTML = "▶️ Generate a new card every two seconds";
+    clearInterval(myInterval);
+    myInterval = -1;
+  }
+});
 
 let myInterval = -1;
 
@@ -58,52 +57,11 @@ let generateRandomNumber = () => {
     "K"
   ];
   let indexNumbers = Math.floor(Math.random() * numbers.length);
-
   return numbers[indexNumbers];
 };
 
 let generateRandomSuit = () => {
   let suit = ["diamond", "spade", "heart", "club"];
-  let indexSuit = Math.floor(Math.random() * 4);
-
+  let indexSuit = Math.floor(Math.random() * suit.length);
   return suit[indexSuit];
 };
-
-/*
-
------- PRUEBAS ------
-
-var btn = document.getElementById("generateRandomCard");
-btn.addEventListener("click", generateRandomNumber);
-
-/*var btn = document.querySelector("#generateRandomCard");
-btn.addEventListener("click", generateRandomNumber);
-btn.addEventListener("click", generateRandomSuit);
-
-setTimeout(() => {
-  document.querySelector(".card").classList.add(generateRandomSuit());
-  document.querySelector(".number").innerHTML = generateRandomNumber();
-}, 1000); // 1 second
-
-let btn = document.getElementById("generateRandomCard");
-btn.addEventListener("click", generateRandomSuit);
-btn.addEventListener("click", generateRandomNumber);
-
-//listen for window resize event
-window.addEventListener("resize", function(event) {
-  var newWidth = window.innerWidth;
-  var newHeight = window.innerHeight;
-});
-
-// Get current width and height (does not change the variables automatically)
-let width = window.innerWidth;
-let height = window.innerHeight;
-
-// Updates the variables every time the window resizes
-window.addEventListener("resize", function(event) {
-  width = window.innerWidth;
-  height = window.innerHeight;
-});
-
-
-*/
